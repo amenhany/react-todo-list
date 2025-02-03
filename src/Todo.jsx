@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { List } from "@mui/joy";
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
-const initialTodos = [
-    { id: 1, text: "Finish React", completed: true },
-    { id: 2, text: "Finish Python", completed: false },
-    { id: 3, text: "Finish Next.js", completed: false }
-]
+
+function getInitialData() {
+    const data = JSON.parse(localStorage.getItem("todos"));
+    return data ? data : [];
+}
 
 export default function Todo() {
-    const [todos, setTodos] = useState(initialTodos);
+    const [todos, setTodos] = useState(getInitialData);
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos])
 
     function removeTodo(id) {
         setTodos(currentTodos => (
@@ -27,14 +32,24 @@ export default function Todo() {
         ))
     }
 
+    function addTodo(text) {
+        setTodos(currentTodos => ([
+            ...currentTodos,
+            { id: crypto.randomUUID(), text: text, completed: false }
+        ]))
+    }
+
     return (
         <List sx={{maxWidth: 360, margin: "0 auto"}}>
+            <TodoForm add={addTodo} />
+
             {todos.map(todo => (
                 <TodoItem 
                     key={todo.id}
                     todo={todo}
                     remove={() => removeTodo(todo.id)}
-                    toggle={() => toggleTodo(todo.id)}/>
+                    toggle={() => toggleTodo(todo.id)}
+                />
             ))}
         </List>
     )
