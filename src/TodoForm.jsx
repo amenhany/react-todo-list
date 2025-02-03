@@ -7,14 +7,14 @@ export default function TodoForm({ add }) {
     const [isFormValid, setIsFormValid] = useState(true);
 
     function handleChange(evt) {
-        if (evt.target.value !== "") setIsFormValid(true);
+        if (evt.target.value.trim() !== "") setIsFormValid(true);
         setText(evt.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (text !== "") {
-            add(text);
+        if (text.trim() !== "") {
+            add(text.trim());
             setText("");
         }
         else setIsFormValid(false);
@@ -30,7 +30,7 @@ export default function TodoForm({ add }) {
                         sx={{color: "var(--joy-palette-neutral-700, #32383E)"}}
                         placeholder="Type something to do..."
                         startDecorator={
-                            <IconButton type="submit" aria-label="Add" size="sm" color="primary">
+                            <IconButton type="submit" disabled={text.trim() === ""} aria-label="Add" size="sm" color="primary">
                                 <Add />
                             </IconButton>
                         }
