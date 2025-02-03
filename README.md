@@ -1,6 +1,6 @@
 # ✅ Todo List
 
-Simple Todo List made using React and Joy UI
+Simple Todo List made using React and JoyUI
 
 ![Banner]()
 

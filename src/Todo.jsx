@@ -17,10 +17,24 @@ export default function Todo() {
         ))
     }
 
+    function toggleTodo(id) {
+        setTodos(currentTodos => (
+            currentTodos.map(todo => {
+                if (todo.id === id)
+                    return { ...todo, completed: !todo.completed };
+                else return todo;
+            })
+        ))
+    }
+
     return (
         <List sx={{maxWidth: 360, margin: "0 auto"}}>
             {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} remove={() => removeTodo(todo.id)}/>
+                <TodoItem 
+                    key={todo.id}
+                    todo={todo}
+                    remove={() => removeTodo(todo.id)}
+                    toggle={() => toggleTodo(todo.id)}/>
             ))}
         </List>
     )
