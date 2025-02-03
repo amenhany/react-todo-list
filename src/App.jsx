@@ -1,12 +1,13 @@
 import '@fontsource/inter';
-import CssBaseline from '@mui/joy/CssBaseline';
+import { CssBaseline } from '@mui/joy';
+import Todo from './Todo';
 
 function App() {
 
   return (
     <>
       <CssBaseline />
-      
+      <Todo />
     </>
   )
 }
