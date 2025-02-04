@@ -27,7 +27,7 @@ export default function TodoForm({ add }) {
                     <Input
                         variant="outlined"
                         color="primary"
-                        sx={{color: "var(--joy-palette-neutral-700, #32383E)", pr: 7}}
+                        sx={{color: "var(--joy-palette-neutral-700, #32383E)", pr: 11.5, mb: 0.7}}
                         placeholder="Type something to do..."
                         startDecorator={
                             <IconButton type="submit" disabled={text.trim() === ""} aria-label="Add" size="sm" color="primary">

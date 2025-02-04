@@ -22,11 +22,14 @@ export default function Todo() {
         ))
     }
 
+    let flag = false
     function toggleTodo(id) {
         setTodos(currentTodos => (
             currentTodos.map(todo => {
-                if (todo.id === id)
+                if (todo.id === id) {
+                    if (!todo.completed) flag = true;
                     return { ...todo, completed: !todo.completed };
+                }
                 else return todo;
             })
         ))
@@ -57,8 +60,8 @@ export default function Todo() {
                 <TodoItem 
                     key={todo.id}
                     todo={todo}
-                    remove={() => removeTodo(todo.id)}
-                    toggle={() => toggleTodo(todo.id)}
+                    remove={removeTodo}
+                    toggle={toggleTodo}
                     edit={editTodo}
                 />
             ))}
