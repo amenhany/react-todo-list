@@ -32,6 +32,16 @@ export default function Todo() {
         ))
     }
 
+    function editTodo(newText, id) {
+        setTodos(currentTodos => (
+            currentTodos.map(todo => {
+                if (todo.id === id)
+                    return { ...todo, text: newText };
+                else return todo;
+            })
+        ))
+    }
+
     function addTodo(text) {
         setTodos(currentTodos => ([
             ...currentTodos,
@@ -49,6 +59,7 @@ export default function Todo() {
                     todo={todo}
                     remove={() => removeTodo(todo.id)}
                     toggle={() => toggleTodo(todo.id)}
+                    edit={editTodo}
                 />
             ))}
         </List>
