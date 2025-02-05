@@ -2,7 +2,7 @@
 
 Simple Todo List made using React and JoyUI
 
-![Banner](assets/todolist.png)
+![Banner](src/assets/todolist.png)
 
 ## Installation 🔧
 
