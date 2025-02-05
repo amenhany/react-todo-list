@@ -18,7 +18,7 @@ export default function TodoItem({ todo, remove, toggle, edit }) {
     }
 
     function removeTodo() {
-        playAudio(trashSound, 0.5);
+        playAudio(trashSound, 0.45);
         remove(todo.id);
     }
 
@@ -38,37 +38,37 @@ export default function TodoItem({ todo, remove, toggle, edit }) {
                 </IconButton>
             }
         >
-                <Input
-                    value={todo.text}
-                    onChange={(evt) => {edit(evt.target.value, todo.id)}}
-                    variant="soft"
-                    sx={{
-                      pl: 5.25,
-                      pr: 11.9,
-                      background: 'none',
-                      transition: 'background .05s ease-out',
-                      '--Input-radius': '0px',
-                      borderBottom: '2px solid',
-                      borderColor: 'neutral.outlinedBorder',
-                      '&:hover': {
-                        borderColor: 'neutral.outlinedHoverBorder',
-                        background: 'var(--joy-palette-primary-100, #E3EFFB)'
-                      },
-                      '&::before': {
-                        border: '1px solid var(--Input-focusedHighlight)',
-                        transform: 'scaleX(0)',
-                        left: 0,
-                        right: 0,
-                        bottom: '-2px',
-                        top: 'unset',
-                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                        borderRadius: 0,
-                      },
-                      '&:focus-within::before': {
-                        transform: 'scaleX(1)',
-                      },
-                    }}
-                />
+            <Input
+                value={todo.text}
+                onChange={(evt) => {edit(evt.target.value, todo.id)}}
+                variant="soft"
+                sx={{
+                    pl: 5.25,
+                    pr: 11.9,
+                    background: 'none',
+                    transition: 'background .05s ease-out',
+                    '--Input-radius': '0px',
+                    borderBottom: '2px solid',
+                    borderColor: 'neutral.outlinedBorder',
+                    '&:hover': {
+                    borderColor: 'neutral.outlinedHoverBorder',
+                    background: 'var(--joy-palette-primary-100, #E3EFFB)'
+                    },
+                    '&::before': {
+                    border: '1px solid var(--Input-focusedHighlight)',
+                    transform: 'scaleX(0)',
+                    left: 0,
+                    right: 0,
+                    bottom: '-2px',
+                    top: 'unset',
+                    transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
+                    borderRadius: 0,
+                    },
+                    '&:focus-within::before': {
+                    transform: 'scaleX(1)',
+                    },
+                }}
+            />
         </ListItem>
     )
 }
